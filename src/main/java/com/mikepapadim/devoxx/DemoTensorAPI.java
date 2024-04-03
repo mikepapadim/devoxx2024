@@ -1,6 +1,7 @@
 package com.mikepapadim.devoxx;
 
 import uk.ac.manchester.tornado.api.types.tensors.Shape;
+import uk.ac.manchester.tornado.api.types.tensors.Tensor;
 import uk.ac.manchester.tornado.api.types.tensors.TensorFloat32;
 
 /**
@@ -28,6 +29,8 @@ public class DemoTensorAPI {
         TensorFloat32 tensorC = addTensors(tensorA, tensorB);
 
         // Step 5: Print the contents of all tensors.
+        System.out.println("\nTensor Shape: " + tensorA.getShape() + "\nTensor DType: " + tensorA.getDTypeAsString() +"\n");
+
         System.out.println("Tensor A Contents:");
         printTensorContents(tensorA, shape);
         System.out.println("Tensor B Contents:");
