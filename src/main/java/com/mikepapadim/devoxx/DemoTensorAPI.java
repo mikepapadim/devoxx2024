@@ -32,11 +32,11 @@ public class DemoTensorAPI {
         System.out.println("\nTensor Shape: " + tensorA.getShape() + "\nTensor DType: " + tensorA.getDTypeAsString() +"\n");
 
         System.out.println("Tensor A Contents:");
-        printTensorContents(tensorA, shape);
+        DemoUtils.printTensorContents(tensorA, shape);
         System.out.println("Tensor B Contents:");
-        printTensorContents(tensorB, shape);
+        DemoUtils.printTensorContents(tensorB, shape);
         System.out.println("Tensor C (A+B) Contents:");
-        printTensorContents(tensorC, shape);
+        DemoUtils.printTensorContents(tensorC, shape);
     }
 
     private static TensorFP32 addTensors(TensorFP32 tensorA, TensorFP32 tensorB) {
@@ -50,15 +50,5 @@ public class DemoTensorAPI {
             tensorC.set(i, value);
         }
         return tensorC;
-    }
-
-    private static void printTensorContents(TensorFP32 tensor, Shape shape) {
-        for (int i = 0; i < shape.getSize(); i++) {
-            System.out.printf("%.2f ", tensor.get(i));
-            if ((i + 1) % shape.getDimensions()[1] == 0) {
-                System.out.println(); // New line after each row for readability.
-            }
-        }
-        System.out.println(); // Extra space for better separation.
     }
 }

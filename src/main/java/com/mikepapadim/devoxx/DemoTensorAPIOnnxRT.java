@@ -46,27 +46,13 @@ public class DemoTensorAPIOnnxRT {
 
             // Run the model inference and process output
             try (OrtSession.Result result = session.run(inputMap)) {
-                processOutput(result);
+                DemoUtils.processOutput(result, OUTPUT_TENSOR_NAME);
             } finally {
                 inputTensor.close(); // Ensure the input tensor is closed to release resources
             }
         } // Environment and session are auto-closed
     }
 
-    private static void processOutput(OrtSession.Result outputMap) {
-        outputMap.get(OUTPUT_TENSOR_NAME).ifPresentOrElse(
-                tensor -> {
-                    // Here you can add code to process the tensor, e.g., extract data, print values, etc.
-                    System.out.println("Output tensor received and processed.\n"+ tensor.toString());
-                    System.out.println(tensor.getInfo());
-                    try {
-                        System.out.println(tensor.getValue());
-                    } catch (OrtException e) {
-                        throw new RuntimeException(e);
-                    }
-                },
-                () -> System.err.println("Output tensor not found in model output.")
-        );
-    }
+
 
 }

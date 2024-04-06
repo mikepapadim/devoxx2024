@@ -43,24 +43,9 @@ public class DemoTensorTornado {
         TornadoExecutionPlan executionPlan = new TornadoExecutionPlan(immutableTaskGraph);
         executionPlan.execute();
 
-        prettyPrintTensor(tensorC, tensorC.getShape());
+        DemoUtils.prettyPrintTensor(tensorC, tensorC.getShape());
     }
 
-    public static void prettyPrintTensor(TensorFP32 tensor, Shape shape) {
-        long[] dimensions = shape.getDimensions();
-        // Ensure the method is compatible with 2D tensors
-        if (dimensions.length != 2) {
-            throw new IllegalArgumentException("This pretty print method is designed for 2D tensors.");
-        }
-        System.out.println("Tensor C Contents:");
-        for (int i = 0; i < dimensions[0]; i++) { // Iterate over the first dimension (rows)
-            for (int j = 0; j < dimensions[1]; j++) { // Iterate over the second dimension (columns)
-                // Calculate the linear index for the current element (row-major order)
-                int index = (int) (i * dimensions[1] + j);
-                System.out.printf("%.2f ", tensor.get(index));
-            }
-            System.out.println(); // New line at the end of each row for readability
-        }
-    }
+
 
 }

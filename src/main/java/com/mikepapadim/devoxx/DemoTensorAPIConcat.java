@@ -19,7 +19,7 @@ public class DemoTensorAPIConcat {
 
         // Print the contents of the concatenated tensor.
         System.out.println("Concatenated Tensor Contents:");
-        printConcatenatedTensorContents(concatenatedArray, 4); // Assuming the concat adds to the first dimension.
+        DemoUtils.printConcatenatedTensorContents(concatenatedArray, 4); // Assuming the concat adds to the first dimension.
     }
 
     private static TensorFP32 createAndFillTensor(Shape shape, float fillValue) {
@@ -28,14 +28,5 @@ public class DemoTensorAPIConcat {
         return tensor;
     }
 
-    private static void printConcatenatedTensorContents(TensorFP32 tensor, int elementsPerTensor) {
-        float[] heapArray = tensor.toHeapArray();
-        for (int i = 0; i < heapArray.length; i++) {
-            System.out.printf("%.2f ", heapArray[i]);
-            if ((i + 1) % elementsPerTensor == 0) {
-                System.out.println(); // New line to visually separate concatenated tensors.
-            }
-        }
-        System.out.println(); // Extra space for clarity.
-    }
+
 }

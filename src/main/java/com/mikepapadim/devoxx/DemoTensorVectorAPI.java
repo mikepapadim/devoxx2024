@@ -31,7 +31,7 @@ public class DemoTensorVectorAPI {
         float[] tensorData = vectorAdd(tensorA, tensorB, vectorSpecies);
 
         System.out.println("\nTensor Output:");
-        printFormatted(tensorData);
+        DemoUtils.printFormatted(tensorData);
 
     }
     private static float[] vectorAdd(TensorFP32 vector1, TensorFP32 vector2, VectorSpecies<Float> species) {
@@ -50,10 +50,5 @@ public class DemoTensorVectorAPI {
         return result;
     }
 
-    private static void printFormatted(float[] array) {
-        for (float value : array) {
-            System.out.format("%.2f ", value);
-        }
-        System.out.println(); // New line for clarity.
-    }
+
 }
