@@ -6,10 +6,10 @@ import uk.ac.manchester.tornado.api.TornadoExecutionPlan;
 import uk.ac.manchester.tornado.api.annotations.Parallel;
 import uk.ac.manchester.tornado.api.enums.DataTransferMode;
 import uk.ac.manchester.tornado.api.types.tensors.Shape;
-import uk.ac.manchester.tornado.api.types.tensors.TensorFloat32;
+import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 
 public class DemoTensorTornado {
-    public static void tensorAdditionFloat32(TensorFloat32 tensorA, TensorFloat32 tensorB, TensorFloat32 tensorC) {
+    public static void tensorAdditionFloat32(TensorFP32 tensorA, TensorFP32 tensorB, TensorFP32 tensorC) {
         for (@Parallel int i = 0; i < tensorC.getSize(); i++) {
             tensorC.set(i, tensorA.get(i) + tensorB.get(i));
         }
@@ -20,11 +20,11 @@ public class DemoTensorTornado {
         Shape shape = new Shape(16, 16);
 
         // Create two tensors and initialize their values
-        TensorFloat32 tensorA = new TensorFloat32(shape);
-        TensorFloat32 tensorB = new TensorFloat32(shape);
+        TensorFP32 tensorA = new TensorFP32(shape);
+        TensorFP32 tensorB = new TensorFP32(shape);
 
         // Create a tensor to store the result of addition
-        TensorFloat32 tensorC = new TensorFloat32(shape);
+        TensorFP32 tensorC = new TensorFP32(shape);
 
         // Initialize tensors
         tensorA.init(20f);
@@ -46,7 +46,7 @@ public class DemoTensorTornado {
         prettyPrintTensor(tensorC, tensorC.getShape());
     }
 
-    public static void prettyPrintTensor(TensorFloat32 tensor, Shape shape) {
+    public static void prettyPrintTensor(TensorFP32 tensor, Shape shape) {
         long[] dimensions = shape.getDimensions();
         // Ensure the method is compatible with 2D tensors
         if (dimensions.length != 2) {

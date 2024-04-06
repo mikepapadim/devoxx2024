@@ -3,7 +3,7 @@ package com.mikepapadim.devoxx;
 import jdk.incubator.vector.FloatVector;
 import jdk.incubator.vector.VectorSpecies;
 import uk.ac.manchester.tornado.api.types.tensors.Shape;
-import uk.ac.manchester.tornado.api.types.tensors.TensorFloat32;
+import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 
 import java.nio.ByteOrder;
 import java.util.stream.IntStream;
@@ -12,11 +12,11 @@ public class DemoTensorVectorAPI {
 
     public static void main(String[] args) {
         // Step 1: Define the shape of the tensors.
-        Shape shape = new Shape( 16, 16); // Creating a 2x2 tensor.
+        Shape shape = new Shape( 16, 16); // Creating a 16x16 tensor.
 
-        // Step 2: Create two TensorFloat32 instances with the specified shape.
-        TensorFloat32 tensorA = new TensorFloat32(shape);
-        TensorFloat32 tensorB = new TensorFloat32(shape);
+        // Step 2: Create two TensorFP32 instances with the specified shape.
+        TensorFP32 tensorA = new TensorFP32(shape);
+        TensorFP32 tensorB = new TensorFP32(shape);
 
         // Step 3: Initialize tensorA with the value 1.0f.
         tensorA.init(1.0f);
@@ -34,7 +34,7 @@ public class DemoTensorVectorAPI {
         printFormatted(tensorData);
 
     }
-    private static float[] vectorAdd(TensorFloat32 vector1, TensorFloat32 vector2, VectorSpecies<Float> species) {
+    private static float[] vectorAdd(TensorFP32 vector1, TensorFP32 vector2, VectorSpecies<Float> species) {
         float[] result = new float[vector1.getSize()];
         System.out.println("\nVector API");
         System.out.println(species.toString());

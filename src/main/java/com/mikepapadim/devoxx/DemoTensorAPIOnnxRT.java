@@ -6,7 +6,7 @@ import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
 import uk.ac.manchester.tornado.api.types.tensors.Shape;
-import uk.ac.manchester.tornado.api.types.tensors.TensorFloat32;
+import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 
 import java.nio.FloatBuffer;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class DemoTensorAPIOnnxRT {
 
     private static void runInference() throws OrtException {
         Shape shape = new Shape(1, 3, 224, 224);
-        TensorFloat32 tornadoTensor = new TensorFloat32(shape);
+        TensorFP32 tornadoTensor = new TensorFP32(shape);
         tornadoTensor.init(2f);
 
         // Try-with-resources to ensure proper resource management
