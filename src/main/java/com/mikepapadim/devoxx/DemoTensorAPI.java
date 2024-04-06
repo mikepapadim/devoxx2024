@@ -3,10 +3,7 @@ package com.mikepapadim.devoxx;
 import uk.ac.manchester.tornado.api.types.tensors.Shape;
 import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 
-/**
- * Hello world!
- *
- */
+
 public class DemoTensorAPI {
     public static void main(String[] args) {
         // Step 1: Define the shape of the tensors.

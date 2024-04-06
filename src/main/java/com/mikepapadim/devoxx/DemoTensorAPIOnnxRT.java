@@ -35,7 +35,11 @@ public class DemoTensorAPIOnnxRT {
         TensorFP32 tornadoTensor = new TensorFP32(shape);
         tornadoTensor.init(2f);
 
-        // Try-with-resources to ensure proper resource management
+
+        String workingDir = System.getProperty("user.dir");
+
+        // Print the current working directory
+        System.out.println("Current working directory: " + workingDir);        // Try-with-resources to ensure proper resource management
         try (OrtEnvironment env = OrtEnvironment.getEnvironment();
                 OrtSession session = env.createSession(MODEL_PATH, new OrtSession.SessionOptions())) {
 
