@@ -7,7 +7,7 @@ import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 public class DemoTensorAPI {
     public static void main(String[] args) {
         // Step 1: Define the shape of the tensors.
-        Shape shape = new Shape( 16, 16); // Creating a 2x2 tensor.
+        Shape shape = new Shape( 16, 16);
 
         // Step 2: Create two TensorFP32 instances with the specified shape.
         TensorFP32 tensorA = new TensorFP32(shape);
@@ -34,6 +34,8 @@ public class DemoTensorAPI {
         DemoUtils.printTensorContents(tensorB, shape);
         System.out.println("Tensor C (A+B) Contents:");
         DemoUtils.printTensorContents(tensorC, shape);
+        System.out.println("Tensor C Shape as ONNX" + tensorC.getShape().toONNXShapeString());
+        System.out.println("Tensor C Shape as TensorFlow" + tensorC.getShape().toTensorFlowShapeString());
     }
 
     private static TensorFP32 addTensors(TensorFP32 tensorA, TensorFP32 tensorB) {

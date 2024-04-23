@@ -26,9 +26,13 @@ public class DemoTensorTornado {
         // Create a tensor to store the result of addition
         TensorFP32 tensorC = new TensorFP32(shape);
 
-        // Initialize tensors
-        tensorA.init(20f);
-        tensorB.init(300f);
+        // Step 3: Initialize tensorA with the value 1.0f.
+        tensorA.init(1.0f);
+
+        // Initialize tensorB with a sequence of values.
+        for (int i = 0; i < tensorB.getSize(); i++) {
+            tensorB.set(i, i + 1.0f); // Setting values from 1.0f, 2.0f, ..., tensorB.getSize().
+        }
 
         // Define the task graph
         TaskGraph taskGraph = new TaskGraph("s0")
@@ -46,6 +50,5 @@ public class DemoTensorTornado {
         DemoUtils.prettyPrintTensor(tensorC, tensorC.getShape());
     }
 
-
-
+    
 }

@@ -33,7 +33,7 @@ public class DemoTensorAPIOnnxRT {
     private static void runInference() throws OrtException {
         Shape shape = new Shape(1, 3, 224, 224);
         TensorFP32 tornadoTensor = new TensorFP32(shape);
-        tornadoTensor.init(2f);
+            tornadoTensor.init(2f);
 
 
         String workingDir = System.getProperty("user.dir");
@@ -50,7 +50,7 @@ public class DemoTensorAPIOnnxRT {
 
             // Run the model inference and process output
             try (OrtSession.Result result = session.run(inputMap)) {
-                DemoUtils.processOutput(result, OUTPUT_TENSOR_NAME);
+//                DemoUtils.processOutput(result, OUTPUT_TENSOR_NAME);
             } finally {
                 inputTensor.close(); // Ensure the input tensor is closed to release resources
             }
