@@ -11,7 +11,6 @@ import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class DemoTensorAPIOnnxRT {
     private static final String INPUT_TENSOR_NAME = "data";
@@ -38,8 +37,7 @@ public class DemoTensorAPIOnnxRT {
 
         String workingDir = System.getProperty("user.dir");
 
-        // Print the current working directory
-        System.out.println("Current working directory: " + workingDir);        // Try-with-resources to ensure proper resource management
+        System.out.println("Current working directory: " + workingDir);
         try (OrtEnvironment env = OrtEnvironment.getEnvironment();
                 OrtSession session = env.createSession(MODEL_PATH, new OrtSession.SessionOptions())) {
 
@@ -48,9 +46,8 @@ public class DemoTensorAPIOnnxRT {
             Map<String, OnnxTensor> inputMap = new HashMap<>();
             inputMap.put(INPUT_TENSOR_NAME, inputTensor);
 
-            // Run the model inference and process output
             try (OrtSession.Result result = session.run(inputMap)) {
-//                DemoUtils.processOutput(result, OUTPUT_TENSOR_NAME);
+                DemoUtils.processOutput(result, OUTPUT_TENSOR_NAME);
             } finally {
                 inputTensor.close(); // Ensure the input tensor is closed to release resources
             }
