@@ -1,7 +1,6 @@
 package com.mikepapadim.devoxx;
 
 import ai.onnxruntime.OnnxTensor;
-import ai.onnxruntime.OnnxValue;
 import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
@@ -32,7 +31,7 @@ public class DemoTensorAPIOnnxRT {
     private static void runInference() throws OrtException {
         Shape shape = new Shape(1, 3, 224, 224);
         TensorFP32 tornadoTensor = new TensorFP32(shape);
-            tornadoTensor.init(2f);
+        tornadoTensor.init(1f);
 
 
         String workingDir = System.getProperty("user.dir");

@@ -6,12 +6,34 @@ import uk.ac.manchester.tornado.api.types.tensors.Shape;
 import uk.ac.manchester.tornado.api.types.tensors.TensorFP32;
 
 public class DemoUtils {
-    static void printFormatted(float[] array) {
-        for (float value : array) {
-            System.out.format("%.2f ", value);
+
+    static void printFormatted(float[] array, Shape shape) {
+        long[] dimensions = shape.getDimensions();
+        // Expecting 2D dimensions for matrix representation
+        if (dimensions.length != 2) {
+            System.out.println("Error: The shape must be 2-dimensional for matrix representation.");
+            return; // Exit if dimensions aren't suitable for a matrix
         }
-        System.out.println(); // New line for clarity.
+
+        int numRows = (int) dimensions[0];
+        int numCols = (int) dimensions[1];
+
+        if (array.length != numRows * numCols) {
+            System.out.println("Error: Array length does not match the product of the tensor shape dimensions.");
+            return; // Exit if array length doesn't match expected matrix size
+        }
+
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                // Calculate the linear index for the current element (row-major order)
+                int index = i * numCols + j;
+                System.out.printf("%.2f ", array[index]);
+            }
+            System.out.println(); // New line at the end of each row for readability
+        }
     }
+
+
     public static void prettyPrintTensor(TensorFP32 tensor, Shape shape) {
         long[] dimensions = shape.getDimensions();
         // Ensure the method is compatible with 2D tensors
